@@ -1,0 +1,6 @@
+README.md
+setup.py
+protein_classifier.egg-info/PKG-INFO
+protein_classifier.egg-info/SOURCES.txt
+protein_classifier.egg-info/dependency_links.txt
+protein_classifier.egg-info/top_level.txt

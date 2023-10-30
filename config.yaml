@@ -1,0 +1,20 @@
+# Configuration file for training
+
+training:
+  seq_max_len: 120
+  gpu: 1
+  epochs: 25
+  batch_size: 1
+  num_workers: 0
+  num_classes: 17
+  optimizer:
+    lr: 0.01 
+    momentum: 0.9 
+    weight_decay: 0.01
+  lr_scheduler:
+    milestones: [5, 8, 10, 12, 14, 16, 18, 20]
+    gamma: 0.9
+
+model:
+  resblock_channels: 128
+  linear_input_channels: 7680
