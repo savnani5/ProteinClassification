@@ -1,10 +1,12 @@
-import os
 import argparse
+import os
+from collections import Counter
+
+import config as cf
+import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
-import config as cf
-from collections import Counter
+
 from utils import reader
 
 

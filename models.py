@@ -1,7 +1,7 @@
-import torch
-import torchmetrics
 import pytorch_lightning as pl
+import torch
 import torch.nn.functional as F
+import torchmetrics
 
 
 class Lambda(torch.nn.Module):
@@ -52,7 +52,7 @@ class ProtCNN(pl.LightningModule):
         num_classes:
         resblock_size:
     """
-    def __init__(self, num_classes: int, train_config, model_config) -> None:
+    def __init__(self, num_classes: int, train_config: dict, model_config: dict) -> None:
         super().__init__()
         self.model = torch.nn.Sequential(
             torch.nn.Conv1d(22, model_config['resblock_channels'], kernel_size=1, padding=0, bias=False),
@@ -62,7 +62,7 @@ class ProtCNN(pl.LightningModule):
             Lambda(lambda x: x.flatten(start_dim=1)),
             torch.nn.Linear(model_config['linear_input_channels'], num_classes)
         )
-        
+        self.save_hyperparameters("num_classes", "train_config", "model_config")
         self.train_acc = torchmetrics.Accuracy()
         self.valid_acc = torchmetrics.Accuracy()
         self.train_config = train_config

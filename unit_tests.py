@@ -1,10 +1,12 @@
 import os
-import torch
+import yaml
 import pytest
+import torch
 
-from utils import reader, build_labels, build_vocab
-from models import ProtCNN
 from dataset import SequenceDataset
+from models import ProtCNN
+from utils import build_labels, build_vocab, reader
+
 
 class TestClass:
     """Unit tests class to test different modules in code. Can be extended to 
@@ -40,8 +42,11 @@ class TestClass:
 
     # @pytest
     def test_model(self, dataset):
+        config_file = os.path.join(os.getcwd(), "config.yaml")
+        with open(config_file, 'r') as stream:
+            config = yaml.safe_load(stream)
         num_classes = len(self.fam2label)
-        prot_cnn = ProtCNN(num_classes)
+        prot_cnn = ProtCNN(num_classes, config['training'], config['model'])
         dataloader = torch.utils.data.DataLoader(
             dataset,
             batch_size=self.batch_size, 
