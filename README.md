@@ -17,7 +17,7 @@ The PFAM dataset is available [here](https://www.kaggle.com/googleai/pfam-seed-r
 
 ### Install requirements in a venv/conda environemnt
 ```
-git clone [https://github.com/savnani5/ProteinClassification.git](https://github.com/savnani5/ProteinClassification.git)
+git clone https://github.com/savnani5/ProteinClassification.git
 cd ProteinClassification
 pip install --no-cache-dir -r requirements.txt
 ```
@@ -51,13 +51,12 @@ docker compose down (to terminate the training)
 
 ### Quick Start
 
-To change training/model parameters use **config_cnn.yaml**/**config_transformer.yaml** files.
+To change training/model parameters use *config_cnn.yaml*/*config_transformer.yaml* files.
 
 To train the ProtCNN model:
 ```
 python trian.py --config <path to config_cnn.yaml> (Provide --data_dir arg if random_split/ is not in ProteinClassifier path) 
 ```
----
 
 To train the ProtTransformer model:
 ```
@@ -68,12 +67,15 @@ To run evaluation on a pretrained model (eval mode):
 ```
 python trian.py -e -c <path to checkpoint file> (Provide --data_dir arg if random_split/ is not in ProteinClassifier path)
 ```
----
+
+Run following command to see all arguements:
+```
+python trian.py -h
+```
 
 ### Directory structure
 ![dir_struct](git_assets/dir_tree.png)
 
----
 
 ### Tests
 
@@ -81,11 +83,10 @@ To run unit tests using pytest:
 ```
 pytest unit_tests.py
 ```
----
 
 ### Visualization 
 
-To visualize the data distribution and play with plots use the data_visualization.py script to save plot under </plots> folder.
+To visualize the data distribution and play with plots use the data_visualization.py script to save plot under */plots* folder.
 ```
 python data_visualization.py (Provide --data_dir arg if random_split/ is not in ProteinClassifier path)
 ```
