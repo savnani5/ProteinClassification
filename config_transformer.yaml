@@ -15,6 +15,7 @@ training:
     gamma: 0.95
 
 model:
+  type: 'Transformer' 
   seq_max_len: 120
   n_head: 8 
   n_layers: 6 

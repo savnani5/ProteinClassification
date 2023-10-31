@@ -36,8 +36,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
     python -m pip install --no-cache-dir -r requirements.txt
 
-# Switch to the non-privileged user to run the application.
-USER appuser
 
 # Copy the source code into the container.
 COPY . .
@@ -46,4 +44,5 @@ COPY . .
 EXPOSE 8000
 
 # Run the application.
+# Add config argument to run different model
 CMD python train.py

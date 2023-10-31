@@ -41,7 +41,7 @@ class ProtTransformer(torch.nn.Module):
         # self.pos_encoder = PositionalEncoding( model_config['seq_max_len'])
         encoder_layer = torch.nn.TransformerEncoderLayer(d_model= model_config['seq_max_len'], nhead= model_config['n_head'], batch_first=True)
         self.transformer_encoder = torch.nn.TransformerEncoder(encoder_layer, num_layers=model_config['n_layers'])
-        self.linear = torch.nn.Linear( model_config['linear_input_channels'], num_classes)
+        self.linear = torch.nn.Linear(model_config['linear_input_channels'], num_classes)
         self.init_weights()
 
     def init_weights(self) -> None:
@@ -135,8 +135,10 @@ class ProteinClassifier(pl.LightningModule):
     def __init__(self, num_classes: int, train_config: dict, model_config: dict) -> None:
         super().__init__()
 
-        self.model = ProtCNN(num_classes, model_config)
-        # self.model = ProtTransformer(num_classes, model_config)
+        if model_config['type'] == 'Transformer':
+            self.model = ProtTransformer(num_classes, model_config)
+        elif model_config['type'] == "CNN":
+            self.model = ProtCNN(num_classes, model_config)
 
         self.save_hyperparameters("num_classes", "train_config", "model_config")
         self.train_acc = torchmetrics.Accuracy()

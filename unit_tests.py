@@ -13,8 +13,7 @@ class TestClass:
     Unit tests class to test different modules in code. Can be extended to 
     multiple files if there are sufficient tests per module.
     """
-    parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-    data_dir = os.path.join(parent_dir, './random_split')
+    data_dir = os.path.join(os.getcwd(), './random_split')
     test_data, test_targets = reader("dev", data_dir)
     word2id = build_vocab(test_data)
     fam2label = build_labels(test_targets)
@@ -43,7 +42,7 @@ class TestClass:
 
     # @pytest
     def test_model(self, dataset):
-        config_file = os.path.join(os.getcwd(), "config.yaml")
+        config_file = os.path.join(os.getcwd(), "config_cnn.yaml")
         with open(config_file, 'r') as stream:
             config = yaml.safe_load(stream)
         num_classes = len(self.fam2label)

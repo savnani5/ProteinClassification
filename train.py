@@ -86,13 +86,12 @@ def train(word2id: dict,
 
 if __name__=="__main__":
     
-    parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-    data_dir = os.path.join(parent_dir, './random_split')
+    data_dir = os.path.join(os.getcwd(), './random_split')
 
     parser = argparse.ArgumentParser(description='Training hyperparameters')
     parser.add_argument("--config",
                         type=str,
-                        default=os.path.join(os.getcwd(), "config.yaml"),
+                        default=os.path.join(os.getcwd(), "config_cnn.yaml"),
                         help="Configuration yaml path")
     
     parser.add_argument("--data_dir",
@@ -111,6 +110,7 @@ if __name__=="__main__":
     
     args = parser.parse_args()
     
+    # Default config is for ProtCNN
     with open(args.config, 'r') as stream:
         config = yaml.safe_load(stream)
     

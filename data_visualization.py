@@ -2,7 +2,6 @@ import argparse
 import os
 from collections import Counter
 
-import config as cf
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -57,13 +56,12 @@ def plot_AA_freq_dist(train_data):
 
 
 if __name__ == "__main__":
-    parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-    data_dir = os.path.join(parent_dir, cf.data_dir)
+    data_dir = os.path.join(os.getcwd(), './random_split')
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_dir",
                         type=str,
                         default=data_dir,
-                        help="random_split data directory")
+                        help="random_split data path")
 
     args = parser.parse_args()
     train_data, train_targets = reader("train", args.data_dir)

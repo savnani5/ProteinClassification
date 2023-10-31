@@ -15,5 +15,6 @@ training:
     gamma: 0.9
 
 model:
+  type: 'CNN'
   resblock_channels: 128 
   linear_input_channels: 7680 
