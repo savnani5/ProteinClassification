@@ -7,7 +7,7 @@ import torchmetrics
 import yaml
 
 from dataset import SequenceDataset
-from models import ProtCNN
+from models import ProteinClassifier
 from utils import build_labels, build_vocab, reader
 
 
@@ -17,8 +17,18 @@ def train(word2id: dict,
           train_config: dict,
           model_config: dict,
           eval: bool=False,
-          chkpt_dir: str=None):
-    """Train function."""
+          chkpt_dir: str=None) -> None:
+    """Train function.
+    Args:
+        word2id (dict): Dictionary to map letters to ids
+        fam2label (dict): Dictionary to map family to class labels
+        data_dir (str): Random split data path 
+        train_config (dict): Training configuration dictionary
+        model_config (dict): Model configuration dictionary
+        eval (bool): Evaluation mode (true/false)
+        chkpt_dir (str): Checkpoint model path
+        """
+    
     if not eval:
         # Training mode
         print("Training the model............")
@@ -40,12 +50,12 @@ def train(word2id: dict,
         )
 
         num_classes = len(fam2label)
-        prot_cnn = ProtCNN(num_classes, train_config, model_config)
+        prot_cnn = ProteinClassifier(num_classes, train_config, model_config)
         pl.seed_everything(0)
         accelerator = None 
         if torch.cuda.is_available():
             accelerator = 'gpu'
-            trainer = pl.Trainer(accelerator=accelerator, gpus=train_config['gpu'] ,max_epochs=train_config['epochs'])
+            trainer = pl.Trainer(accelerator=accelerator, gpus=train_config['gpu'], max_epochs=train_config['epochs'])
         else:
             trainer = pl.Trainer(accelerator=accelerator, max_epochs=train_config['epochs'])
         trainer.fit(prot_cnn, dataloaders['train'], dataloaders['dev'])
@@ -60,7 +70,7 @@ def train(word2id: dict,
             shuffle=False,
             num_workers=train_config['num_workers'],
         )
-        model = ProtCNN.load_from_checkpoint(chkpt_dir)
+        model = ProteinClassifier.load_from_checkpoint(chkpt_dir)
         model.eval()
         test_acc = torchmetrics.Accuracy()
         for batch in test_dataloader:

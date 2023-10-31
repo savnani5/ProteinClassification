@@ -4,7 +4,7 @@ import pytest
 import torch
 
 from dataset import SequenceDataset
-from models import ProtCNN
+from models import ProteinClassifier
 from utils import build_labels, build_vocab, reader
 
 
@@ -46,7 +46,7 @@ class TestClass:
         with open(config_file, 'r') as stream:
             config = yaml.safe_load(stream)
         num_classes = len(self.fam2label)
-        prot_cnn = ProtCNN(num_classes, config['training'], config['model'])
+        prot_cnn = ProteinClassifier(num_classes, config['training'], config['model'])
         dataloader = torch.utils.data.DataLoader(
             dataset,
             batch_size=self.batch_size, 
