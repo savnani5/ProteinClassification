@@ -10,7 +10,7 @@ The implemented base model is inspired by [ProtCNN](https://www.biorxiv.org/cont
 
 The PFAM dataset is available [here](https://www.kaggle.com/googleai/pfam-seed-random-split).
 
-<img src="plots/AA_freq_dist.png" width="200" height="200">   <img src="plots/family_size_dist.png" width="200" height="200">   <img src="plots/sequence_len_dist.png" width="200" height="200">
+<img src="plots/AA_freq_dist.png" width="300" height="200">   <img src="plots/family_size_dist.png" width="300" height="200">   <img src="plots/sequence_len_dist.png" width="300" height="200">
 
 
 ## Installation
