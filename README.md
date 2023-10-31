@@ -31,21 +31,18 @@ docker compose up --build
 docker compose down (to terminate the training)
 ```
 
-<details>
-  <summary> Dependencies (click to expand) </summary>
-  
-  ## Dependencies
-    - matplotlib==3.4.1
-    - numpy==1.23.5
-    - pandas==1.2.3
-    - pytorch-lightning==1.5.3
-    - seaborn==0.11.1
-    - tensorboard==2.2.2
-    - torch==1.10.1+cu102
-    - torchmetrics==0.6.0
-    - PyYAML==5.4.1
-    - scipy==1.10.1
-    - pytest==7.4.3
+## Dependencies
+- matplotlib==3.4.1
+- numpy==1.23.5
+- pandas==1.2.3
+- pytorch-lightning==1.5.3
+- seaborn==0.11.1
+- tensorboard==2.2.2
+- torch==1.10.1+cu102
+- torchmetrics==0.6.0
+- PyYAML==5.4.1
+- scipy==1.10.1
+- pytest==7.4.3
   
 
 ## How To Train/Test?
@@ -91,9 +88,9 @@ To visualize the data distribution and play with plots use the data_visualizatio
 python data_visualization.py (Provide --data_dir arg if random_split/ is not in ProteinClassifier path)
 ```
 
-### Improvement (suggestions)
+### Improvements (suggestions)
 
-**DISCLAIMER**: Although I have implemented the improvements, I wasn't able to validate them due to high compute/time requirements and they may/ maynot imporve the performance of State of the art ProtCNN model.
+**DISCLAIMER**: Although I have implemented the improvements, I wasn't able to validate them due to high compute/time requirements and they may/maynot imporve the performance of State of the art ProtCNN model.
 
 - Implementation and use of **Focal loss** to account for data imbalance in different protein families. We can also use weighted crossentropy loss.
 - Transformer Encoder based Architecture (similar to BERT with/without positional embeddings) to model sequences better. The attention mechanism ideally should perform better compared to 1D conv feature extractor with residual blocks. This model is almost 65% smaller (50M params) compared to base ProtCNN (137M params).
