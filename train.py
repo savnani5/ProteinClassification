@@ -18,7 +18,9 @@ def train(word2id: dict,
           model_config: dict,
           eval: bool=False,
           chkpt_dir: str=None) -> None:
-    """Train function.
+    """
+    Train function.
+    
     Args:
         word2id (dict): Dictionary to map letters to ids
         fam2label (dict): Dictionary to map family to class labels

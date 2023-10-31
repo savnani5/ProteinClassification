@@ -9,7 +9,8 @@ from utils import build_labels, build_vocab, reader
 
 
 class TestClass:
-    """Unit tests class to test different modules in code. Can be extended to 
+    """
+    Unit tests class to test different modules in code. Can be extended to 
     multiple files if there are sufficient tests per module.
     """
     parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))

@@ -3,11 +3,14 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class FocalLoss(nn.modules.loss._WeightedLoss):
-    """Custom Focal loss class for imblanced data distribution.
+    """
+    Custom Focal loss class for imblanced data distribution.
+    
     Args:
         weight (float): alpha constant for focal loss
         gamma (float): gamma constant for focal loss
-        reduction (str): Operation to perform on weighted loss"""
+        reduction (str): Operation to perform on weighted loss
+    """
     
     def __init__(self, weight: float=None, gamma: float=2, reduction: str='mean'):
         super(FocalLoss, self).__init__(weight,reduction=reduction)

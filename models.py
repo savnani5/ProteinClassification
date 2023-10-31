@@ -7,7 +7,9 @@ import torchmetrics
 from losses import FocalLoss
 
 class PositionalEncoding(torch.nn.Module):
-    """Positional Embedding using sin/cos of different frequencies.
+    """
+    Positional Embedding using sin/cos of different frequencies.
+    
     Args:
         seq_len (int): Input sequence length
         dropout: Probablility of dropout

@@ -4,7 +4,9 @@ import pandas as pd
 
 
 def reader(partition: str, data_path: str) -> tuple:
-    """Data loading utility.
+    """
+    Data loading utility.
+    
     Args:
         partition (str): train/test/dev partition
         data_path (str): Path to read the data
@@ -23,7 +25,9 @@ def reader(partition: str, data_path: str) -> tuple:
 
 
 def build_labels(targets: pd.Series) -> dict:
-    """Generate label dictionary from targets.
+    """
+    Generate label dictionary from targets.
+    
     Args:
         targets (pd.Series): families for data
     Returns:
@@ -38,7 +42,9 @@ def build_labels(targets: pd.Series) -> dict:
     return fam2label
 
 def build_vocab(data: pd.Series) -> dict:
-    """Build input vocabulary for model.
+    """
+    Build input vocabulary for model.
+    
     Args:
         data (pd.Series) : Sequences for data
     Returns:

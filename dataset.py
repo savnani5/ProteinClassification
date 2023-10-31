@@ -27,7 +27,9 @@ class SequenceDataset(torch.utils.data.Dataset):
         return len(self.data)
 
     def __getitem__(self, index: int)-> dict:
-        """Return dictonary of sequene and label from given index
+        """
+        Return dictonary of sequene and label from given index
+        
         Args:
             index (int): Sample index in dataset
         
@@ -40,7 +42,9 @@ class SequenceDataset(torch.utils.data.Dataset):
         return {'sequence': seq, 'target' : label}
     
     def preprocess(self, text: str) -> torch.tensor:
-        """Preprocess the text and convert input to one hot encodings.
+        """
+        Preprocess the text and convert input to one hot encodings.
+        
         Args:
             text (str): Input text from dataframe index
         
