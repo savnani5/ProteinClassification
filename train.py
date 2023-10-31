@@ -38,12 +38,16 @@ def train(word2id: dict,
             shuffle=False,
             num_workers=train_config['num_workers'],
         )
-        
 
         num_classes = len(fam2label)
         prot_cnn = ProtCNN(num_classes, train_config, model_config)
         pl.seed_everything(0)
-        trainer = pl.Trainer(gpus=train_config['gpu'], max_epochs=train_config['epochs'])
+        accelerator = None 
+        if torch.cuda.is_available():
+            accelerator = 'gpu'
+            trainer = pl.Trainer(accelerator=accelerator, gpus=train_config['gpu'] ,max_epochs=train_config['epochs'])
+        else:
+            trainer = pl.Trainer(accelerator=accelerator, max_epochs=train_config['epochs'])
         trainer.fit(prot_cnn, dataloaders['train'], dataloaders['dev'])
     
     else:
@@ -105,6 +109,9 @@ if __name__=="__main__":
     if args.e:
         eval=True
         chkpt_dir=args.c
+    else:
+        eval=False
+        chkpt_dir=""
 
     train(word2id, 
           fam2label, 

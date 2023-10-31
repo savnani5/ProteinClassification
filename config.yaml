@@ -3,8 +3,8 @@
 training:
   seq_max_len: 120
   gpu: 1
-  epochs: 1 #25
-  batch_size: 4096 #1
+  epochs: 25 #1
+  batch_size: 1 #4096
   num_workers: 0
   optimizer:
     lr: 0.01 
@@ -15,5 +15,5 @@ training:
     gamma: 0.9
 
 model:
-  resblock_channels: 1 #128
-  linear_input_channels: 60 #7680 
+  resblock_channels: 128 #1
+  linear_input_channels: 7680 #60 
