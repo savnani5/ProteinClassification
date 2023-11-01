@@ -90,16 +90,3 @@ To visualize the data distribution and play with plots use the data_visualizatio
 ```
 python data_visualization.py (Provide --data_dir arg if random_split/ is not in ProteinClassifier path)
 ```
-
-### Improvements (suggestions)
-
-**DISCLAIMER**: Although I have implemented the improvements, I wasn't able to validate them due to high compute/time requirements and they may/maynot imporve the performance of State of the art ProtCNN model.
-
-- Implementation and use of **Focal loss** to account for data imbalance in different protein families. We can also use weighted crossentropy loss.
-- Transformer Encoder based Architecture (similar to BERT with/without positional embeddings) to model sequences better. The attention mechanism ideally should perform better compared to 1D conv feature extractor with residual blocks. This model is almost 65% smaller (50M params) compared to base ProtCNN (137M params).
-- Other imporovements can be to use an Ensemble of ProtCNN models or increase the model parameters etc. to improve classification accuracy.  
-
-
-## Citation
-
-Implementation adapted from Instadeep's Starter Jupyter Notebook for ProtCNN.
